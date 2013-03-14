@@ -15,3 +15,6 @@ None yet, since this is not a functional release.
 
 # Special Instructions
 This release just implements all the interface components on a single screen. This will not be anything like the final release, things are subject to change.
+
+The Icon is here: https://dl.dropbox.com/u/976432/sounder.jpg
+Color Scheme is here: https://dl.dropbox.com/u/976432/color-scheme.png
