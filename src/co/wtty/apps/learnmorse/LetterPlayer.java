@@ -10,18 +10,9 @@ public class LetterPlayer {
 	
 	private static LetterPlayer _letterPlayer;
 	
-	String[] alphabet = {
-		"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
-		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-	};
-	String[] morse_alphabet = {
-		".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", 
-		"-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."	
-	};
-	
-	HashMap<String, String> _morse_map = new HashMap<String, String>();
-	
 	private TonePlayer _tonePlayer;
+	private Alphabet _alphabet;
+	
 	private int _pause = 100;
 	
 	public static LetterPlayer getInstance(Context context) {
@@ -35,14 +26,9 @@ public class LetterPlayer {
 	protected LetterPlayer(Context context) {
 		// Constructor
 		_tonePlayer = TonePlayer.getInstance(context);
-		buildMap();
+		_alphabet = Alphabet.getInstance();
 	}
 	
-	private void buildMap() {
-		for(int i = 0; i < alphabet.length; i++) {
-			_morse_map.put(alphabet[i], morse_alphabet[i]);
-		}
-	}
 	
 	void playPattern(String pattern) {
 		for(int i = 0; i < pattern.length(); i++) {
@@ -70,6 +56,6 @@ public class LetterPlayer {
 	}
 	
 	void play(String letter) {
-		playPattern(_morse_map.get(letter));
+		playPattern(_alphabet.getTones(letter));
 	}
 }
