@@ -1,10 +1,6 @@
 package co.wtty.apps.learnmorse;
 
-import java.util.HashMap;
-
 import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 
 public class LetterPlayer {
 	
@@ -34,15 +30,12 @@ public class LetterPlayer {
 		for(int i = 0; i < pattern.length(); i++) {
 			switch (pattern.charAt(i)) {
 			case '-':
-				Log.i("LETTER PLAYER", "-");
 				_tonePlayer.dah();
 				break;
 			case '.':
-				Log.i("LETTER PLAYER", ".");
 				_tonePlayer.dit();
 				break;
 			default:
-				Log.i("LETTER PLAYER", "X");
 				break;
 			}
 		}
