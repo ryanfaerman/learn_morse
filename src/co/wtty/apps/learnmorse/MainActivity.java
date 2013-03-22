@@ -1,16 +1,19 @@
 package co.wtty.apps.learnmorse;
 
+import co.wtty.apps.learnmorse.LetterStageFragment.LetterStageListener;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements LetterStageListener {
 	
 	String _currentLetter = "A";
 	
@@ -18,74 +21,64 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Button _button = (Button) findViewById(R.id.play_tone_button);
-		_button.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				LetterPlayer _player = LetterPlayer.getInstance(getApplicationContext());
-				_player.play(_currentLetter);
-				
-			}
-		});
+		Log.i("TRACE", "CREATING MAIN");
 		
 		Spinner _letter_list = (Spinner) findViewById(R.id.letter_list);
 		ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Alphabet.getInstance().letters);
 		_letter_list.setAdapter(spinnerArrayAdapter);
-		
-		
-		Button _change_letter_button = (Button) findViewById(R.id.change_letter_button);
-		_change_letter_button.setOnClickListener(new View.OnClickListener() {
-			
+		Log.i("TRACE", "POPULATED SPINNER");
+
+		((Button) findViewById(R.id.change_letter_button)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Spinner _letter_list = (Spinner) findViewById(R.id.letter_list);
-				_currentLetter = Alphabet.getInstance().letters[(int)_letter_list.getSelectedItemId()];
-				updateLetterDisplay();
-				showLetter();
+				Alphabet abcs = Alphabet.getInstance();
+				_currentLetter = abcs.letters[(int)_letter_list.getSelectedItemId()];
+				Log.i("TRACE", "SETTING LETTER TO "+_currentLetter);
+				abcs.setCurrentLetter(_currentLetter);
+				((LetterStageFragment) getFragmentManager().findFragmentById(R.id.letter_stage)).refreshLetter();
 			}
 		});
 		
-		((Button) findViewById(R.id.show_letter_button)).setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				showLetter();
-				
-			}
-		});
-		
-		((Button) findViewById(R.id.next_letter_button)).setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				_currentLetter = Alphabet.getInstance().randomLetter();
-				updateLetterDisplay();
-				
-			}
-		});
-	}
-	
-	void showLetter() {
-		((TextView) findViewById(R.id.letter_textview)).setVisibility(View.VISIBLE);
-	}
-	
-	void updateLetterDisplay() {
-		TextView _letter = (TextView) findViewById(R.id.letter_textview);
-		TextView _tones = (TextView) findViewById(R.id.dit_dash_textview);
-		
-		Alphabet abcs = Alphabet.getInstance();
-		_letter.setVisibility(View.INVISIBLE);
-		_letter.setText(_currentLetter);
-		_tones.setText(abcs.getTones(_currentLetter));
-	}
 
+		
+		
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.i("TRACE", "SELECTED SOMETHING");
+		Log.i("TRACE", String.valueOf(item.getItemId()));
+		switch (item.getItemId()) {
+	        case R.id.menu_letter_test:
+	        	Log.i("TRACE", "GOING TO TEST ACTIVITY");
+	        	Intent intent = new Intent(this, TestActivity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            Log.i("TRACE", "STARTING ACTIVITY");
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public void onNext() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onShow() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
