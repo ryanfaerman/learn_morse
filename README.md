@@ -1,17 +1,23 @@
 # Current Application Status
-This applications is not even in an alpha release state. This is mostly setting up the various linear layouts and experimenting with different interface components. Currently the interface is implemented in one large XML file; this needs to be moved into fragments.
+This release is a beta release. All existing features work in a state that is ready enough to get feedback from an end-user or users.
 
 # Working Features
-There are no working features as this is mostly a design and setup release.
+ * Playing Tones
+ * Playing Letters
+ * Playing Words
+ * Morse Alphabet
+ * Sounder
+ * Learner
+ * Letter Test
 
 # To Do
- * Break main activity into fragments
- * Add activities to menu
- * Create sounder singleton class
- * Implement functionality
+ * Track test responses
+ * Setup icon(s)
+ * Change based on feedback
+ * Horizontal Layout
 
 # Use Guidelines
-None yet, since this is not a functional release.
+Interact with the app and find "pain points" and note them for future iteration.
 
 # Special Instructions
-This release just implements all the interface components on a single screen. This will not be anything like the final release, things are subject to change.
+There is currently a bug that the tone player misses the first or second tone the first time playing a letter after freshly loading the application. Press "play" twice on the first application load as a temporary workaround.
