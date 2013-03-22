@@ -22,6 +22,9 @@ public class TestActivity extends Activity implements LetterStageListener {
 		_context = this;
 		Log.i("TRACE", "LOADING TEST ACTIVITY");
 		
+		Alphabet.getInstance().next();
+		((LetterStageFragment) getFragmentManager().findFragmentById(R.id.letter_stage)).refreshLetter();
+		
 		Spinner _letter_list = (Spinner) findViewById(R.id.choice_list);
 		ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Alphabet.getInstance().letters);
 		_letter_list.setAdapter(spinnerArrayAdapter);
