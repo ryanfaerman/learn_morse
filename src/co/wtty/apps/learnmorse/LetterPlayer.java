@@ -9,7 +9,7 @@ public class LetterPlayer {
 	private TonePlayer _tonePlayer;
 	private Alphabet _alphabet;
 	
-	private int _pause = 100;
+	private int _pause = 300;
 	
 	public static LetterPlayer getInstance(Context context) {
 		if(_letterPlayer == null) {
