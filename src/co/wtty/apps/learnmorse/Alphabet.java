@@ -1,6 +1,7 @@
 package co.wtty.apps.learnmorse;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class Alphabet {
 	private static Alphabet _alphabet;
@@ -16,6 +17,8 @@ public class Alphabet {
 	
 	HashMap<String, String> _letters_to_tones_map = new HashMap<String, String>();
 	HashMap<String, String> _tones_to_letters_map = new HashMap<String, String>();
+	
+	Random _rng = new Random();
 	
 	public static Alphabet getInstance() {
 		if(_alphabet == null) {
@@ -44,4 +47,14 @@ public class Alphabet {
 	String getLetter(String tones) {
 		return _tones_to_letters_map.get(tones);
 	}
+	
+	String randomLetter() {
+		return letters[_rng.nextInt(26)];
+	}
+	
+	String randomTones() {
+		return tones[_rng.nextInt(26)];
+	}
+	
+	
 }
