@@ -18,6 +18,7 @@ public class Alphabet {
 	HashMap<String, String> _letters_to_tones_map = new HashMap<String, String>();
 	HashMap<String, String> _tones_to_letters_map = new HashMap<String, String>();
 	
+	private String _currentLetter = "";
 	Random _rng = new Random();
 	
 	public static Alphabet getInstance() {
@@ -31,6 +32,7 @@ public class Alphabet {
 	protected Alphabet() {
 		// Constructor
 		buildMap();
+		_currentLetter = randomLetter();
 	}
 	
 	private void buildMap() {
@@ -38,6 +40,23 @@ public class Alphabet {
 			_letters_to_tones_map.put(letters[i], tones[i]);
 			_tones_to_letters_map.put(tones[i], letters[i]);
 		}
+	}
+	
+	String currentLetter() {
+		return _currentLetter;
+	}
+	
+	String currentTones() {
+		return getTones(_currentLetter);
+	}
+	
+	void setCurrentLetter(String letter) {
+		_currentLetter = letter;
+	}
+	
+	String next() {
+		_currentLetter = randomLetter();
+		return _currentLetter;
 	}
 	
 	String getTones(String letter) {
