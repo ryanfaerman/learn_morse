@@ -15,19 +15,22 @@
 			        android:layout_width="0dip"
 			        android:layout_height="wrap_content"
 			        android:layout_weight="1"
-			        android:text="@string/play"/>
+			        android:text="@string/play"
+			        android:drawableRight="@drawable/bullhorn"/>
             <Button 
 			        android:id="@+id/show_letter_button"
 			        android:layout_width="0dip"
 			        android:layout_height="wrap_content"
 			        android:layout_weight="1"
-			        android:text="@string/show"/>
+			        android:text="@string/show"
+			        android:drawableRight="@drawable/eye"/>
             <Button 
 			        android:id="@+id/next_letter_button"
 			        android:layout_width="0dip"
 			        android:layout_height="wrap_content"
 			        android:layout_weight="1"
-			        android:text="@string/next"/>
+			        android:text="@string/next"
+			        android:drawableRight="@drawable/squiggle"/>
     		</LinearLayout>
     		
         <!-- letter display -->
