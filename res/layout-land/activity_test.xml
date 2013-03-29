@@ -8,8 +8,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="20dp">
-        
-        
+
 				<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     			android:id="@+id/letter_stage"
     			android:name="co.wtty.apps.learnmorse.LetterStageFragment"
