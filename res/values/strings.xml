@@ -7,7 +7,7 @@
     <string name="change_letter">Change Letter</string>
     <string name="play">Play</string>
     <string name="show">Show</string>
-    <string name="next">Next</string>
+    <string name="next">Random</string>
     <string name="choose_as_answer">Choose as Answer</string>
 
 </resources>
