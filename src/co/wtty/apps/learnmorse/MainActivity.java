@@ -27,6 +27,8 @@ public class MainActivity extends Activity implements LetterStageListener {
 		ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Alphabet.getInstance().letters);
 		_letter_list.setAdapter(spinnerArrayAdapter);
 		Log.i("TRACE", "POPULATED SPINNER");
+		
+		((LetterStageFragment) getFragmentManager().findFragmentById(R.id.letter_stage)).refreshLetter();
 
 		((Button) findViewById(R.id.change_letter_button)).setOnClickListener(new View.OnClickListener() {
 			@Override
